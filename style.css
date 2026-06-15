@@ -928,5 +928,10 @@ RESPONSIVE
     width:280px;
     height:280px;
   }
+  .expertise-grid-fixed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
 }
 ```
