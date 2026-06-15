@@ -1,0 +1,237 @@
+# Text Classification API Documentation
+
+## API Overview
+
+The Text Classification API provides automated document categorization and keyword classification for enterprise text analysis workflows. The API supports structured text ingestion, preprocessing, classification, and confidence scoring for operational intelligence systems and annotation pipelines.
+
+### Base URL
+
+```http
+https://api.example.com/v1
+```
+
+### Supported Formats
+
+* JSON
+* UTF-8 encoded text
+* REST API architecture
+
+---
+
+# Authentication
+
+Authentication is performed using Bearer Token authorization.
+
+## Header Format
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Example
+
+```http
+Authorization: Bearer sk_live_7x93_example_key
+```
+
+---
+
+# Endpoint Overview
+
+| Method | Endpoint       | Description                              |
+| ------ | -------------- | ---------------------------------------- |
+| POST   | /classify-text | Classify input text                      |
+| POST   | /clean-text    | Normalize and preprocess text            |
+| GET    | /models        | Retrieve available classification models |
+| GET    | /health        | API health status                        |
+
+---
+
+# POST /classify-text
+
+Classifies input text into predefined categories using NLP models.
+
+## Endpoint
+
+```http
+POST /v1/classify-text
+```
+
+---
+
+# Request Body
+
+```json
+{
+  "text": "The manufacturing workflow failed during calibration validation.",
+  "model": "operations-classifier",
+  "language": "en"
+}
+```
+
+---
+
+# Request Parameters
+
+| Parameter | Type   | Required | Description                   |
+| --------- | ------ | -------- | ----------------------------- |
+| text      | string | Yes      | Input text for classification |
+| model     | string | Yes      | Classification model name     |
+| language  | string | No       | Language code (default: en)   |
+
+---
+
+# Example cURL Request
+
+```bash
+curl -X POST https://api.example.com/v1/classify-text \
+-H "Authorization: Bearer YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+"text":"The manufacturing workflow failed during calibration validation.",
+"model":"operations-classifier",
+"language":"en"
+}'
+```
+
+---
+
+# Successful Response
+
+```json
+{
+  "status": "success",
+  "classification": {
+    "category": "Operational Compliance",
+    "confidence_score": 0.94,
+    "keywords": [
+      "manufacturing",
+      "workflow",
+      "calibration",
+      "validation"
+    ]
+  },
+  "processing_time_ms": 182
+}
+```
+
+---
+
+# Response Fields
+
+| Field              | Type    | Description                      |
+| ------------------ | ------- | -------------------------------- |
+| status             | string  | API request status               |
+| category           | string  | Assigned classification category |
+| confidence_score   | float   | Model confidence score           |
+| keywords           | array   | Extracted keywords               |
+| processing_time_ms | integer | Processing duration              |
+
+---
+
+# Error Responses
+
+## 400 Bad Request
+
+Returned when required parameters are missing.
+
+```json
+{
+  "error": {
+    "code": 400,
+    "message": "Missing required parameter: text"
+  }
+}
+```
+
+---
+
+## 401 Unauthorized
+
+Returned when API authentication fails.
+
+```json
+{
+  "error": {
+    "code": 401,
+    "message": "Invalid API token"
+  }
+}
+```
+
+---
+
+## 429 Rate Limit Exceeded
+
+Returned when request volume exceeds API limits.
+
+```json
+{
+  "error": {
+    "code": 429,
+    "message": "Rate limit exceeded"
+  }
+}
+```
+
+---
+
+# Rate Limits
+
+| Plan       | Requests Per Minute |
+| ---------- | ------------------- |
+| Developer  | 60                  |
+| Enterprise | 1000                |
+
+---
+
+# Supported Models
+
+| Model                 | Purpose                            |
+| --------------------- | ---------------------------------- |
+| operations-classifier | Enterprise workflow categorization |
+| sentiment-analysis    | Sentiment detection                |
+| document-routing      | Intelligent document routing       |
+| annotation-helper     | Annotation preprocessing           |
+
+---
+
+# Status Codes
+
+| Code | Meaning               |
+| ---- | --------------------- |
+| 200  | Successful request    |
+| 400  | Invalid request       |
+| 401  | Unauthorized          |
+| 404  | Resource not found    |
+| 429  | Rate limit exceeded   |
+| 500  | Internal server error |
+
+---
+
+# Versioning
+
+The API uses URI versioning.
+
+Example:
+
+```http
+/v1/classify-text
+```
+
+Future versions may introduce:
+
+* expanded multilingual support
+* custom model training
+* batch classification workflows
+* webhook integrations
+
+---
+
+# Contact
+
+For API support or enterprise integration inquiries:
+
+* Email: [INPUT HERE]
+* GitHub Repository: [INPUT HERE]
+* Documentation Portal: [INPUT HERE]
