@@ -4,6 +4,243 @@
 <head>
 
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Text Classification API Documentation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div class="background-gradient"></div>
+
+  <!-- NAV -->
+  <header>
+
+    <nav>
+
+      <div class="logo">API</div>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#auth">Auth</a></li>
+        <li><a href="#endpoints">Endpoints</a></li>
+        <li><a href="#errors">Errors</a></li>
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>API DOCUMENTATION</span>
+
+      <h2>Text Classification API</h2>
+
+    </div>
+
+    <div class="glass-card">
+
+      <p>
+        The Text Classification API provides automated document categorization and keyword classification
+        for enterprise text analysis workflows. It supports structured ingestion, preprocessing,
+        classification, and confidence scoring for operational intelligence systems.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="section">
+
+    <div class="section-title">
+      <span>API OVERVIEW</span>
+      <h2>Core Information</h2>
+    </div>
+
+    <div class="glass-card">
+
+      <h3>Base URL</h3>
+
+      <pre><code>https://api.example.com/v1</code></pre>
+
+      <h3>Supported Formats</h3>
+
+      <ul>
+        <li>JSON</li>
+        <li>UTF-8 encoded text</li>
+        <li>REST API architecture</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+  <!-- AUTH -->
+  <section id="auth" class="section">
+
+    <div class="section-title">
+      <span>AUTHENTICATION</span>
+      <h2>Bearer Token Access</h2>
+    </div>
+
+    <div class="glass-card">
+
+      <h3>Header Format</h3>
+
+      <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+
+      <h3>Example</h3>
+
+      <pre><code>Authorization: Bearer sk_live_7x93_example_key</code></pre>
+
+    </div>
+
+  </section>
+
+  <!-- ENDPOINTS -->
+  <section id="endpoints" class="section">
+
+    <div class="section-title">
+      <span>ENDPOINTS</span>
+      <h2>Available Routes</h2>
+    </div>
+
+    <div class="glass-card">
+
+      <ul>
+        <li><b>POST</b> /classify-text — Classify input text</li>
+        <li><b>POST</b> /clean-text — Normalize text</li>
+        <li><b>GET</b> /models — Retrieve models</li>
+        <li><b>GET</b> /health — API health status</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+  <!-- REQUEST -->
+  <section class="section">
+
+    <div class="section-title">
+      <span>REQUEST</span>
+      <h2>POST /classify-text</h2>
+    </div>
+
+    <div class="glass-card">
+
+      <h3>Endpoint</h3>
+
+      <pre><code>POST /v1/classify-text</code></pre>
+
+      <h3>Request Body</h3>
+
+      <pre><code>{
+  "text": "The manufacturing workflow failed during calibration validation.",
+  "model": "operations-classifier",
+  "language": "en"
+}</code></pre>
+
+      <h3>cURL Example</h3>
+
+      <pre><code>curl -X POST https://api.example.com/v1/classify-text \
+-H "Authorization: Bearer YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+"text":"The manufacturing workflow failed during calibration validation.",
+"model":"operations-classifier",
+"language":"en"
+}'</code></pre>
+
+    </div>
+
+  </section>
+
+  <!-- RESPONSE -->
+  <section class="section">
+
+    <div class="section-title">
+      <span>RESPONSE</span>
+      <h2>Successful Output</h2>
+    </div>
+
+    <div class="glass-card">
+
+      <pre><code>{
+  "status": "success",
+  "classification": {
+    "category": "Operational Compliance",
+    "confidence_score": 0.94,
+    "keywords": [
+      "manufacturing",
+      "workflow",
+      "calibration",
+      "validation"
+    ]
+  },
+  "processing_time_ms": 182
+}</code></pre>
+
+    </div>
+
+  </section>
+
+  <!-- ERRORS -->
+  <section id="errors" class="section">
+
+    <div class="section-title">
+      <span>ERROR HANDLING</span>
+      <h2>Response Codes</h2>
+    </div>
+
+    <div class="glass-card">
+
+      <h3>400 Bad Request</h3>
+      <p>Missing required parameters.</p>
+
+      <pre><code>{
+  "error": {
+    "code": 400,
+    "message": "Missing required parameter: text"
+  }
+}</code></pre>
+
+      <h3>401 Unauthorized</h3>
+      <p>Invalid API token.</p>
+
+      <h3>429 Rate Limit</h3>
+      <p>Too many requests.</p>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 API Documentation Portfolio
+  </footer>
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
 
   <meta
     name="viewport"
